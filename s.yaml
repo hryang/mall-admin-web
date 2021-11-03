@@ -1,19 +1,26 @@
 edition: 1.0.0
 name: mall
-access: quanxi-hryang
+access: default
 vars:
   region: cn-hangzhou
+
+# Define the Serverless-Devs services. Each service is a FC function.
 services:
   mall-admin-web:
     component: devsapp/fc
     props:
       region: ${vars.region}
-      service: # AlibabaCloud FunctionCompute Service
+      # Define the AlibabaCloud FunctionCompute Service.
+      service:
         name: mall-admin-web
         internetAccess: true
-      function: # AlibabaCloud FunctionCompute Function
+        # Let the serverless-devs create a shared logstore automatically.
+        # All FC services share the same logstore.
+        logConfig: auto 
+      # Define the AlibabaCloud FunctionCompute Function.
+      function:
         name: mall-admin-web
-        description: The mall project based on SpringBoot+MyBatis. https://github.com/macrozheng/mall
+        description: The mall project based on SpringBoot+MyBatis. https://github.com/macrozheng/mall-admin-web
         caPort: 80
         memorySize: 1536
         handler: not-used # handler is invalid for custom container.
