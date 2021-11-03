@@ -27,7 +27,7 @@ services:
         timeout: 60
         runtime: custom-container
         customContainerConfig:
-          image: registry.cn-hangzhou.aliyuncs.com/quanxi-hryang/mall-admin-web:1.0-SNAPSHOT
+          image: registry.${vars.region}.aliyuncs.com/quanxi-hryang/mall-admin-web:1.0-SNAPSHOT
       triggers:
         - name: httpTrigger
           type: http
